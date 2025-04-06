@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Deusa Marcela (Ma) - O Amor em Forma de Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Reset Ultra Estilizado */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Efeito de Carga Imersivo */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.5s ease-out;
+        }
+        
+        .loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-heart {
+            width: 80px;
+            height: 80px;
+            background: #ff6b6b;
+            transform: rotate(45deg);
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        
+        .loader-heart:before, .loader-heart:after {
+            content: "";
+            width: 80px;
+            height: 80px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .loader-heart:before {
+            top: -40px;
+            left: 0;
+        }
+        
+        .loader-heart:after {
+            top: 0;
+            left: -40px;
+        }
+        
+        .loader-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ffa3a3;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInOut 3s infinite;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        /* Corpo com Efeito de Fundo Galáctico */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            perspective: 1000px;
+        }
+        
+        /* Efeito de Partículas 4K */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        /* Estrelas Cadentes */
+        .shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: shooting 5s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes shooting {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(1000px) translateY(500px);
+                opacity: 0;
+            }
+        }
+        
+        /* Container Principal com Efeito 3D */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+            transform-style: preserve-3d;
+        }
+        
+        /* Cabeçalho com Efeito de Neon */
+        header {
+            padding: 60px 0;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px) rotateX(20deg);
+            animation: fadeInDown 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa3a3, #ffcccb, #ffa3a3, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+            position: relative;
+            display: inline-block;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 107, 107, 0.5), 
+                             0 0 20px rgba(255, 107, 107, 0.4),
+                             0 0 30px rgba(255, 107, 107, 0.3);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(255, 107, 107, 0.8),
+                             0 0 25px rgba(255, 107, 107, 0.6),
+                             0 0 35px rgba(255, 107, 107, 0.5),
+                             0 0 45px rgba(255, 107, 107, 0.4);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .subtitle::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+        
+        /* Seção Hero com Efeito Parallax */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: pulseGlow 8s infinite alternate;
+        }
+        
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+        }
+        
+        .heart-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotateY(0);
+            }
+            50% {
+                transform: translateY(-30px) rotateY(20deg);
+            }
+        }
+        
+        .heart {
+            width: 100%;
+            height: 100%;
+            background: #ff6b6b;
+            transform: rotate(45deg);
+            position: relative;
+            box-shadow: 0 0 60px rgba(255, 107, 107, 0.8),
+                       0 0 120px rgba(255, 107, 107, 0.5),
+                       0 0 180px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite, rainbowBorder 8s infinite linear;
+            border: 3px solid transparent;
+        }
+        
+        @keyframes rainbowBorder {
+            0% {
+                border-color: #ff6b6b;
+                box-shadow: 0 0 60px rgba(255, 107, 107, 0.8),
+                             0 0 120px rgba(255, 107, 107, 0.5),
+                             0 0 180px rgba(255, 107, 107, 0.3);
+            }
+            25% {
+                border-color: #ffa3a3;
+                box-shadow: 0 0 60px rgba(255, 163, 163, 0.8),
+                             0 0 120px rgba(255, 163, 163, 0.5),
+                             0 0 180px rgba(255, 163, 163, 0.3);
+            }
+            50% {
+                border-color: #ffcccb;
+                box-shadow: 0 0 60px rgba(255, 204, 203, 0.8),
+                             0 0 120px rgba(255, 204, 203, 0.5),
+                             0 0 180px rgba(255, 204, 203, 0.3);
+            }
+            75% {
+                border-color: #ffa3a3;
+                box-shadow: 0 0 60px rgba(255, 163, 163, 0.8),
+                             0 0 120px rgba(255, 163, 163, 0.5),
+                             0 0 180px rgba(255, 163, 163, 0.3);
+            }
+            100% {
+                border-color: #ff6b6b;
+                box-shadow: 0 0 60px rgba(255, 107, 107, 0.8),
+                             0 0 120px rgba(255, 107, 107, 0.5),
+                             0 0 180px rgba(255, 107, 107, 0.3);
+            }
+        }
+        
+        .heart:before, .heart:after {
+            content: "";
+            width: 200px;
+            height: 200px;
+            background: inherit;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: inherit;
+        }
+        
+        .heart:before {
+            top: -100px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -100px;
+        }
+        
+        .heart-reflection {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 30%;
+            height: 30%;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: rotate(45deg);
+            filter: blur(5px);
+            animation: reflectionMove 4s infinite alternate;
+        }
+        
+        @keyframes reflectionMove {
+            to {
+                top: 30%;
+                left: 30%;
+            }
+        }
+        
+        .hero h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5rem;
+            margin: 40px 0;
+            background: linear-gradient(45deg, #fff, #ffcccb, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Seções com Efeito de Rolagem 3D */
+        section {
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(80px) rotateX(15deg);
+            transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+        
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 107, 107, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+        
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #ffa3a3;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+        
+        /* Galeria de Fotos Holográfica */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            perspective: 1000px;
+        }
+        
+        .photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                       0 0 0 1px rgba(255, 255, 255, 0.1);
+            height: 400px;
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-style: preserve-3d;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        
+        .photo::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transform-origin: center;
+        }
+        
+        .photo:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.2),
+                        0 0 30px rgba(255, 107, 107, 0.4);
+        }
+        
+        .photo:hover img {
+            transform: scale(1.1) rotate(1deg);
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2;
+            backdrop-filter: blur(5px);
+        }
+        
+        .photo:hover .photo-caption {
+            transform: translateY(0);
+        }
+        
+        .photo-caption h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ffa3a3;
+        }
+        
+        /* Mensagens com Efeito de Vidro */
+        .messages {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .message {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        
+        .message::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            transform: rotate(45deg);
+            z-index: -1;
+            transition: all 0.6s ease;
+        }
+        
+        .message:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+                        0 0 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .message:hover::before {
+            animation: shine 1.5s;
+        }
+        
+        @keyframes shine {
+            0% {
+                left: -100%;
+                top: -100%;
+            }
+            100% {
+                left: 100%;
+                top: 100%;
+            }
+        }
+        
+        .message::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff6b6b, #ffa3a3);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        .message h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffa3a3;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .message h3::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b6b, transparent);
+        }
+        
+        .message p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        /* Botão Flutuante com Efeito de Neon */
+        .floating-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa3a3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(255, 107, 107, 0.6),
+                        0 0 0 4px rgba(255, 107, 107, 0.2),
+                        0 0 0 8px rgba(255, 107, 107, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            animation: pulseShadow 2s infinite;
+        }
+        
+        @keyframes pulseShadow {
+            0%, 100% {
+                box-shadow: 0 5px 25px rgba(255, 107, 107, 0.6),
+                            0 0 0 4px rgba(255, 107, 107, 0.2),
+                            0 0 0 8px rgba(255, 107, 107, 0.1);
+            }
+            50% {
+                box-shadow: 0 5px 35px rgba(255, 107, 107, 0.8),
+                            0 0 0 6px rgba(255, 107, 107, 0.3),
+                            0 0 0 12px rgba(255, 107, 107, 0.15);
+            }
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 8px 35px rgba(255, 107, 107, 0.8),
+                        0 0 0 6px rgba(255, 107, 107, 0.3),
+                        0 0 0 12px rgba(255, 107, 107, 0.15);
+        }
+        
+        .floating-btn i {
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Efeitos Especiais de Corações */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff6b6b;
+            animation: float-up 6s linear forwards;
+            opacity: 0;
+            text-shadow: 0 0 10px currentColor;
+            filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.7));
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+        
+        /* Efeito de Confete */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 11;
+            overflow: hidden;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            opacity: 0;
+            animation: confetti-fall 5s linear forwards;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Footer com Efeito de Neon */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(0, 0, 0, 0.4);
+            margin-top: 120px;
+            position: relative;
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+            filter: blur(1px);
+        }
+        
+        footer p {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-top: 20px;
+            color: #ffa3a3;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+        
+        /* Responsividade Ultra Aprimorada */
+        @media (max-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 4.5rem;
+            }
+            
+            h2 {
+                font-size: 3.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 3rem;
+            }
+            
+            .message h3 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero {
+                min-height: 700px;
+            }
+            
+            .heart-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .heart, .heart:before, .heart:after {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .heart:before {
+                top: -75px;
+            }
+            
+            .heart:after {
+                left: -75px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo {
+                height: 350px;
+            }
+            
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .message {
+                padding: 30px 20px;
+            }
+            
+            .message h3 {
+                font-size: 1.8rem;
+            }
+            
+            .photo-caption h3 {
+                font-size: 1.5rem;
+            }
+            
+            .signature {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Loader Imersivo -->
+    <div class="loader">
+        <div class="loader-heart"></div>
+        <div class="loader-text">Carregando todo meu amor...</div>
+    </div>
+    
+    <!-- Efeito de Partículas 4K -->
+    <div id="particles-js"></div>
+    
+    <!-- Estrelas Cadentes -->
+    <div class="shooting-stars"></div>
+    
+    <!-- Corações Flutuantes -->
+    <div class="floating-hearts"></div>
+    
+    <!-- Efeito de Confete -->
+    <div class="confetti-container"></div>
+    
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Para Minha Deusa Marcela</h1>
+            <p class="subtitle">Cada instante ao seu lado é um universo de felicidade</p>
+        </header>
+        
+        <!-- Seção Hero -->
+        <section class="hero">
+            <div class="heart-container">
+                <div class="heart">
+                    <div class="heart-reflection"></div>
+                </div>
+            </div>
+            <h2>Ma, você é a poesia da minha vida</h2>
+            <p>Este santuário digital foi criado com cada fragmento de amor que sinto por você, para eternizar o que temos e celebrar o que ainda está por vir</p>
+        </section>
+        
+        <!-- Seção Nossa História -->
+        <section id="story">
+            <h2>Nossa Saga de Amor</h2>
+            <div class="messages">
+                <div class="message">
+                    <h3>O Primeiro Olhar</h3>
+                    <p>O universo conspirou para que nossos caminhos se cruzassem naquele momento exato. Quando nossos olhares se encontraram pela primeira vez, senti como se todas as estrelas do céu tivessem se alinhado apenas para nós. Havia uma magia inexplicável no ar, uma conexão que transcendia o tempo e o espaço. Naquele instante, meu coração soube que você era a resposta para perguntas que eu nem sabia que tinha.</p>
+                    <p>Desde então, cada detalhe sobre você ficou gravado em mim como a obra mais preciosa de arte. A maneira como seu sorriso ilumina até o dia mais cinza, como seus olhos brilham quando você fala sobre o que ama, e como seu toque tem o poder de acalmar até as tempestades mais violentas dentro de mim.</p>
+                </div>
+                <div class="message">
+                    <h3>Memórias que Valem Eternidades</h3>
+                    <p>Nossos momentos juntos são como pérolas raras que guardo com o maior cuidado no baú do meu coração. Cada risada compartilhada, cada silêncio confortável, cada abraço que parece durar menos do que deveria - todos esses fragmentos de tempo se transformaram nos alicerces da minha felicidade.</p>
+                    <p>Lembro de cada aventura como se fosse ontem: os passeios sem destino, as conversas até o amanhecer, os jantares em que o mundo parecia desaparecer ao nosso redor. Com você, aprendi que o amor transforma o ordinário em extraordinário, o simples em especial, e o cotidiano em uma coleção de pequenos milagres.</p>
+                </div>
+                <div class="message">
+                    <h3>Nosso Amanhã</h3>
+                    <p>Quando fecho os olhos e penso no futuro, vejo uma tapeçaria de possibilidades tecida com os fios dourados do nosso amor. Quero construir uma vida que seja um reflexo do que temos hoje, mas multiplicado por infinito. Uma vida repleta de viagens que nos mostrem o mundo, de noites aconchegantes que nos mostrem um ao outro, e de desafios que nos fortaleçam.</p>
+                    <p>Prometo ser seu porto seguro nas tempestades e seu maior incentivador nos sonhos. Quero estar ao seu lado não apenas nos dias de sol, mas principalmente quando o céu escurecer, porque sei que juntos podemos encontrar a luz mesmo na escuridão. Você é minha parceira, minha musa, minha melhor amiga e o amor da minha vida.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Galeria -->
+        <section id="gallery">
+            <h2>Nossa Galáxia de Momentos</h2>
+            <div class="gallery">
+                <div class="photo">
+                    <img src="https://source.unsplash.com/random/800x800/?couple,love,romantic" alt="Nossa conexão">
+                    <div class="photo-caption">
+                        <h3>Almas Gêmeas</h3>
+                        <p>Quando nossos olhares se encontram, o resto do mundo desaparece</p>
+                    </div>
+                </div>
+                <div class="photo">
+                    <img src="https://source.unsplash.com/random/800x800/?beach,sunset,kiss" alt="Pôr do sol juntos">
+                    <div class="photo-caption">
+                        <h3>Pôr do Sol do Nosso Amor</h3>
+                        <p>Cada final de dia é mais bonito quando compartilhado com você</p>
+                    </div>
+                </div>
+                <div class="photo">
+                    <img src="https://source.unsplash.com/random/800x800/?dinner,romantic,candle" alt="Jantar à luz de velas">
+                    <div class="photo-caption">
+                        <h3>Noites Mágicas</h3>
+                        <p>Onde o tempo para e só existimos nós dois</p>
+                    </div>
+                </div>
+                <div class="photo">
+                    <img src="https://source.unsplash.com/random/800x800/?travel,adventure,mountains" alt="Explorando o mundo">
+                    <div class="photo-caption">
+                        <h3>Aventuras Compartilhadas</h3>
+                        <p>O mundo é mais bonito visto ao seu lado</p>
+                    </div>
+                </div>
+                <div class="photo">
+                    <img src="https://source.unsplash.com/random/800x800/?hug,embrace,love" alt="Abraço apertado">
+                    <div class="photo-caption">
+                        <h3>Meu Porto Seguro</h3>
+                        <p>Nos seus braços encontro o lar que meu coração sempre procurou</p>
+                    </div>
+                </div>
+                <div class="photo">
+                    <img src="https://source.unsplash.com/random/800x800/?smile,happy,joy" alt="Rindo juntos">
+                    <div class="photo-caption">
+                        <h3>Felicidade em Forma de Nós</h3>
+                        <p>Seu sorriso é meu lugar favorito no universo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Mensagem Especial -->
+        <section id="special-message">
+            <h2>Minha Declaração Infinita</h2>
+            <div class="message" style="max-width: 900px; margin: 0 auto;">
+                <h3>Minha Querida Marcela (Ma)</h3>
+                <p>Escrever sobre o que sinto por você é como tentar capturar o oceano em um copo - impossível conter toda a vastidão do meu amor em meras palavras. Você é a sinfonia mais bela que já ouvi, a obra de arte mais comovente que já vi, o poema mais perfeito que já li. Cada dia ao seu lado é uma página nova no livro mais precioso da minha existência.</p>
+                <p>O que sinto por você transcende qualquer definição de amor que eu já tenha conhecido. É um sentimento que pulsa em cada célula do meu ser, que colore meus pensamentos e inspira meus sonhos. Você me mostrou que o amor verdadeiro não é apenas sobre grandes gestos, mas sobre os pequenos momentos que se tornam eternos na memória do coração.</p>
+                <p>Admiro cada detalhe seu: a força que você demonstra mesmo quando sente medo, a compaixão que você oferece mesmo quando está cansada, a luz que você irradia mesmo nos dias mais sombrios. Você é, em todos os sentidos, a pessoa mais incrível que já conheci.</p>
+                <p>Prometo amar você não apenas hoje, mas em todas as versões de você que o tempo trará. Prometo ser seu parceiro nas aventuras e seu abrigo nas tempestades. Prometo lembrá-lo todos os dias do quanto você é extraordinária, mesmo quando você duvidar disso. E prometo continuar escolhendo você, todos os dias, até que as estrelas deixem de brilhar.</p>
+                <p style="text-align: center; margin-top: 40px;">
+                    <span style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ffa3a3; display: block; margin-bottom: 10px;">Para sempre seu,</span>
+                    <span style="font-family: 'Pacifico', cursive; font-size: 2rem; color: #ff6b6b;">[Seu Nome]</span>
+                </p>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Este universo digital foi criado com cada batida do meu coração por você</p>
+        <p>© <span id="year"></span> - Todos os momentos são nossos</p>
+        <div class="signature">Marcela, meu amor eterno</div>
+    </footer>
+    
+    <!-- Botão Flutuante -->
+    <div class="floating-btn" id="musicBtn">
+        <i class="fas fa-music"></i>
+    </div>
+    
+    <!-- Scripts Ultra Aprimorados -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Loader Imersivo
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('fade-out');
+                
+                // Criar explosão de confete após o loader
+                createConfettiExplosion();
+                
+                // Iniciar estrelas cadentes
+                startShootingStars();
+            }, 2000);
+        });
+        
+        // Efeito de Confete
+        function createConfettiExplosion() {
+            const colors = ['#ff6b6b', '#ffa3a3', '#ffcccb', '#ffffff', '#f8d7da'];
+            const container = document.querySelector('.confetti-container');
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Estrelas Cadentes
+        function startShootingStars() {
+            const container = document.querySelector('.shooting-stars');
+            
+            function createShootingStar() {
+                const star = document.createElement('div');
+                star.classList.add('shooting-star');
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = Math.random() * 3 + 2 + 's';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(star);
+                
+                setTimeout(() => {
+                    star.remove();
+                }, 8000);
+            }
+            
+            // Criar várias estrelas inicialmente
+            for (let i = 0; i < 5; i++) {
+                createShootingStar();
+            }
+            
+            // Continuar criando estrelas periodicamente
+            setInterval(createShootingStar, 2000);
+        }
+        
+        // Inicializar partículas com configuração premium
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 120,
+                        "density": {
+                            "enable": true,
+                            "value_area": 1000
+                        }
+                    },
+                    "color": {
+                        "value": ["#ff6b6b", "#ffa3a3", "#ffcccb", "#ffffff"]
+                    },
+                    "shape": {
+                        "type": ["circle", "triangle", "star"],
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.7,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 4,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 3,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 180,
+                        "color": "#ffa3a3",
+                        "opacity": 0.4,
+                        "width": 1.5
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 3,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 800,
+                            "rotateY": 1600
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "bubble"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 180,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 300,
+                            "size": 60,
+                            "duration": 3,
+                            "opacity": 0.8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 150,
+                            "duration": 0.6
+                        },
+                        "push": {
+                            "particles_nb": 6
+                        },
+                        "remove": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+            
+            // Animação de scroll para as seções com parallax
+            const sections = document.querySelectorAll('section');
+            
+            const checkSections = () => {
+                sections.forEach((section, index) => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight * 0.75) {
+                        section.classList.add('visible');
+                        
+                        // Criar corações ao visualizar seções
+                        if (!section.dataset.animated) {
+                            createHeartsAroundSection(section);
+                            section.dataset.animated = "true";
+                        }
+                    }
+                });
+            };
+            
+            function createHeartsAroundSection(section) {
+                const sectionRect = section.getBoundingClientRect();
+                const floatingHearts = document.querySelector('.floating-hearts');
+                
+                for (let i = 0; i < 15; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('floating-heart');
+                    heart.innerHTML = '❤️';
+                    heart.style.left = (Math.random() * sectionRect.width + sectionRect.left) + 'px';
+                    heart.style.top = (Math.random() * 100 + sectionRect.top - 50) + 'px';
+                    heart.style.animationDuration = Math.random() * 4 + 3 + 's';
+                    heart.style.fontSize = Math.random() * 25 + 15 + 'px';
+                    heart.style.opacity = Math.random() * 0.5 + 0.5;
+                    floatingHearts.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 7000);
+                }
+            }
+            
+            window.addEventListener('scroll', checkSections);
+            checkSections(); // Verificar ao carregar a página
+            
+            // Corações flutuantes aleatórios
+            const floatingHearts = document.querySelector('.floating-hearts');
+            
+            function createRandomHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤎', '🖤', '🤍'][Math.floor(Math.random() * 9)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+                heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+                heart.style.opacity = Math.random() * 0.7 + 0.3;
+                floatingHearts.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 10000);
+            }
+            
+            // Criar corações em intervalos aleatórios
+            function randomHeartInterval() {
+                createRandomHeart();
+                setTimeout(randomHeartInterval, Math.random() * 2000 + 500);
+            }
+            
+            randomHeartInterval();
+            
+            // Botão de música com efeito
+            const musicBtn = document.getElementById('musicBtn');
+            let audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Substitua por uma música romântica
+            audio.loop = true;
+            let isPlaying = false;
+            
+            musicBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    audio.pause();
+                    musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+                    musicBtn.style.background = 'linear-gradient(45deg, #ff6b6b, #ffa3a3)';
+                } else {
+                    audio.play();
+                    musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    musicBtn.style.background = 'linear-gradient(45deg, #ffa3a3, #ff6b6b)';
+                    createConfettiExplosion();
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // Efeito de digitação no subtítulo
+            const subtitle = document.querySelector('.subtitle');
+            const text = "Cada instante ao seu lado é um universo de felicidade";
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    subtitle.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 80);
+                } else {
+                    // Piscar cursor no final
+                    subtitle.style.borderRight = '2px solid #ff6b6b';
+                    setTimeout(() => {
+                        subtitle.style.borderRight = 'none';
+                    }, 500);
+                }
+            }
+            
+            setTimeout(typeWriter, 1800);
+            
+            // Atualizar ano no footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Efeito de cursor personalizado
+            document.body.addEventListener('mousemove', function(e) {
+                const cursor = document.createElement('div');
+                cursor.classList.add('floating-heart');
+                cursor.innerHTML = '❤️';
+                cursor.style.left = e.pageX + 'px';
+                cursor.style.top = e.pageY + 'px';
+                cursor.style.fontSize = '16px';
+                cursor.style.animationDuration = '1s';
+                cursor.style.opacity = '0.7';
+                floatingHearts.appendChild(cursor);
+                
+                setTimeout(() => {
+                    cursor.remove();
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
